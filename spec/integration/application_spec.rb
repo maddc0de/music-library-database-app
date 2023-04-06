@@ -44,6 +44,20 @@ describe Application do
 
   end
 
+  context "GET /artists/:id" do
+    it "returns info about artist 1" do
+      response = get('/artists/1')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<p>Artist: Pixies, Genre: Rock</p>')
+    end
+
+    # it "returns info about artist 2" do
+
+    # end
+
+  end
+
   context "GET /artists" do
     it "returns a list of artists" do
       response = get('/artists')
@@ -76,21 +90,8 @@ describe Application do
 
   end
 
-  # context "GET /albums" do
-  #   it "returns the list of album as an HTML page" do
-  #     response = get('/albums')
-
-  #     expect(response.status).to eq(200)
-  #     expect(response.body).to include('Title: Doolittle')
-  #     expect(response.body).to include('Released: 1989')
-  #     expect(response.body).to include('Surfer Rosa')
-  #     expect(response.body).to include('Released: 1988')
-  #   end
-
-  # end
-
   context "GET /albums" do
-    it "returns the list of album as an HTML page with link to each album" do
+    it "returns the list of album as an HTML page with links to each album" do
       response = get('/albums')
 
       expect(response.status).to eq(200)
@@ -98,7 +99,5 @@ describe Application do
       expect(response.body).to include('Title: <a href="/albums/5">Bossanova</a>')  # make sure there is no extra white space on albums.erb for this line
     end
   end
-
-
 
 end
