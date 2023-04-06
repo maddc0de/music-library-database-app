@@ -55,7 +55,7 @@ describe Application do
     end
   end
 
-  context "GET /album/:id" do
+  context "GET /albums/:id" do
     it "returns info about album 1" do
       response = get('/albums/1')
 
@@ -76,18 +76,27 @@ describe Application do
 
   end
 
+  # context "GET /albums" do
+  #   it "returns the list of album as an HTML page" do
+  #     response = get('/albums')
+
+  #     expect(response.status).to eq(200)
+  #     expect(response.body).to include('Title: Doolittle')
+  #     expect(response.body).to include('Released: 1989')
+  #     expect(response.body).to include('Surfer Rosa')
+  #     expect(response.body).to include('Released: 1988')
+  #   end
+
+  # end
+
   context "GET /albums" do
-    it "returns the list of album as an HTML page" do
+    it "returns the list of album as an HTML page with link to each album" do
       response = get('/albums')
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('Title: Doolittle')
-      expect(response.body).to include('Released: 1989')
-      expect(response.body).to include('Surfer Rosa')
-      expect(response.body).to include('Released: 1988')
+      expect(response.body).to include('Title: <a href="/albums/1">Doolittle</a>')  # make sure there is no extra white space on albums.erb for this line      
+      expect(response.body).to include('Title: <a href="/albums/5">Bossanova</a>')  # make sure there is no extra white space on albums.erb for this line
     end
-
-
   end
 
 

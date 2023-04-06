@@ -17,7 +17,6 @@ class Application < Sinatra::Base
   get '/albums' do  # returns the list of albums as an HTML page
     repo = AlbumRepository.new
     @albums = repo.all
-    p @albums
     
     return erb(:albums)
   end
