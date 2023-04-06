@@ -44,7 +44,7 @@ describe Application do
 
   end
 
-  context "GET route" do
+  context "GET /artists" do
     it "returns a list of artists" do
       response = get('/artists')
 
@@ -54,5 +54,28 @@ describe Application do
       expect(response.body).to eq(expected_response)
     end
   end
+
+  context "GET /album/:id" do
+    it "returns info about album 1" do
+      response = get('/albums/1')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Doolittle</h1>')
+      expect(response.body).to include('Release year: 1989')
+      expect(response.body).to include('Artist: Pixies')
+    end
+
+    it "returns info about album 2" do
+      response = get('/albums/2')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Surfer Rosa</h1>')
+      expect(response.body).to include('Release year: 1988')
+      expect(response.body).to include('Artist: Pixies')
+    end
+
+  end
+
+
 
 end
