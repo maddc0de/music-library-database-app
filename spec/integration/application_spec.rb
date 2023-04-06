@@ -76,6 +76,20 @@ describe Application do
 
   end
 
+  context "GET /albums" do
+    it "returns the list of album as an HTML page" do
+      response = get('/albums')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Title: Doolittle')
+      expect(response.body).to include('Released: 1989')
+      expect(response.body).to include('Surfer Rosa')
+      expect(response.body).to include('Released: 1988')
+    end
+
+
+  end
+
 
 
 end

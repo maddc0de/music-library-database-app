@@ -14,13 +14,12 @@ class Application < Sinatra::Base
     also_reload 'lib/artist_repository'
   end
 
-  get '/albums' do
+  get '/albums' do  # returns the list of albums as an HTML page
     repo = AlbumRepository.new
-    albums = repo.all
+    @albums = repo.all
+    p @albums
     
-    response = albums.map do |album|
-      album.title
-    end.join(', ' )
+    return erb(:albums)
   end
 
   get '/albums/:id' do
