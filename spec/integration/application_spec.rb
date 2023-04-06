@@ -52,21 +52,17 @@ describe Application do
       expect(response.body).to include('<p>Artist: Pixies, Genre: Rock</p>')
     end
 
-    # it "returns info about artist 2" do
-
-    # end
-
   end
 
   context "GET /artists" do
-    it "returns a list of artists" do
+    it "returns the list of artists as an HTML page with links to each artist" do
       response = get('/artists')
 
-      expected_response = 'Pixies, ABBA, Taylor Swift, Nina Simone'
-
       expect(response.status).to eq(200)
-      expect(response.body).to eq(expected_response)
+      expect(response.body).to include('Name: <a href="/artists/1">Pixies</a>')  # make sure there is no extra white space on artists.erb for this line      
+      expect(response.body).to include('Name: <a href="/artists/4">Nina Simone</a>') 
     end
+
   end
 
   context "GET /albums/:id" do
@@ -98,6 +94,7 @@ describe Application do
       expect(response.body).to include('Title: <a href="/albums/1">Doolittle</a>')  # make sure there is no extra white space on albums.erb for this line      
       expect(response.body).to include('Title: <a href="/albums/5">Bossanova</a>')  # make sure there is no extra white space on albums.erb for this line
     end
+
   end
 
 end
