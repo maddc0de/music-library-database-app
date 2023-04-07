@@ -20,11 +20,13 @@ This project connects together what I have learnt working with databases and wit
 
 * To learn how to test-drive Sinatra routes which interacts with database-backed Repository class
 * TO learn how to use Embedded Ruby(ERB) syntax to dynamically generate HTML responses
-<!-- We can use ERB (for Embedded Ruby) syntax to generate dynamically the HTML that is sent to the client, by replacing the dynamic parts of the HTML, which are delimited by ERB tags (in between <%= and %>). -->
+<!-- We can use ERB (for Embedded Ruby) syntax to generate dynamically the HTML that is sent to the client, by replacing the dynamic parts of the HTML, which are delimited by ERB tags (in between <%= and %> to print on the erb file, <% and %> to execute a ruby code block). -->
+* To learn how to use HTML links to make the browser send `GET` requests.
+
 
 ----
 
-## Sequence diagram for web application: `post/artists` route with Database
+## Sequence diagram for web application: `post/artists` route with Database:
 
 ```mermaid
 sequenceDiagram
@@ -35,7 +37,7 @@ sequenceDiagram
     participant db as Postgres Database
 
 
-    Note left of ru: Flow of time <br />⬇ <br /> ⬇ <br /> ⬇
+    Note left of pm: Flow of time <br />⬇ <br /> ⬇ <br /> ⬇
 
 
     %% t->>app: Runs `ruby app.rb`
@@ -49,3 +51,22 @@ sequenceDiagram
     ar->>sin: returns Artist instance
     sin->>pm: sends the generated HTTP response status '200 OK' back to the client signifying the request was successful
 ```
+
+----
+
+## Sequence diagram explaining the behaviour of the program when a request is sent to `GET /artists/:id`:
+
+![sequence diagram](get-method-sequence-diagram.png)
+
+----
+
+## Other information
+
+* when building programs, we use RSpec as a client to test-drive our HTTP routes
+* using **hypertext links**, or **anchor links** in HTML with `<a>` HTML tag to create links with attribute `href` containing the path of the link. example below:
+
+```html
+<a href="/about">Go to the about page</a>
+```
+
+* using browser developer tools to inspect HTTP requests sent by the browser, and the responses it receives can help get visibility into what the browser sends and get back through its HTTP connection with the web server.
