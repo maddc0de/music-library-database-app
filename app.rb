@@ -80,6 +80,16 @@ class Application < Sinatra::Base
   end
 
   post '/artists' do
+    def invalid_request_params?
+      return true if params[:name] == nil || params[:genre] == nil
+      return true if params[:name] == "" || params[:genre] == ""
+      return false
+    end
+
+    if invalid_request_params?  # call method to validate request parameters
+      status 400
+      return ''
+    end
     repo = ArtistRepository.new
     new_artist = Artist.new
     new_artist.name = params[:name]
