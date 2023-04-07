@@ -6,7 +6,12 @@
   <input type="text" name="release_year"><br>
 
   <label>Artist ID:</label>
-  <input type="text" name="artist_id"><br>
+    <select>
+    <%@artists.each do |artist|%>
+    <option><%=artist.id%></option>
+    <%end%>
+    </select>
+
 
   <input type="submit"><br>
 </form>
