@@ -19,10 +19,10 @@ This project connects together what I have learnt working with databases and wit
 ## Objective
 
 * To learn how to test-drive Sinatra routes which interacts with database-backed Repository class
-* TO learn how to use Embedded Ruby(ERB) syntax to dynamically generate HTML responses
+* To learn how to use Embedded Ruby(ERB) syntax to dynamically generate HTML responses
 <!-- We can use ERB (for Embedded Ruby) syntax to generate dynamically the HTML that is sent to the client, by replacing the dynamic parts of the HTML, which are delimited by ERB tags (in between <%= and %> to print on the erb file, <% and %> to execute a ruby code block). -->
 * To learn how to use HTML links to make the browser send `GET` requests.
-
+* To learn how to use HTML forms to make the browser send `POST` requests.
 
 ----
 
@@ -62,11 +62,20 @@ sequenceDiagram
 
 ## Other information
 
-* when building programs, we use RSpec as a client to test-drive our HTTP routes
-* using **hypertext links**, or **anchor links** in HTML with `<a>` HTML tag to create links with attribute `href` containing the path of the link. example below:
+* When building programs, we use RSpec as a client to test-drive our HTTP routes
+* Using **hypertext links**, or **anchor links** in HTML with `<a>` HTML tag to create links with attribute `href` containing the path of the link. example below:
 
 ```html
 <a href="/about">Go to the about page</a>
 ```
 
-* using browser developer tools to inspect HTTP requests sent by the browser, and the responses it receives can help get visibility into what the browser sends and get back through its HTTP connection with the web server.
+* Using browser developer tools to inspect HTTP requests sent by the browser, and the responses it receives can help get visibility into what the browser sends and get back through its HTTP connection with the web server
+
+* A form is used to send `POST` request, usually with some additional data, as request parameters and implemented over two routes:
+
+1. `GET` route, only returns an HTML page with the form, so the user can fill in and submit it.
+2. `POST` route, handles the body parameters sent by the browser, and returns a response (usually to indicate whether the form data has been successfully handled or saved).
+
+Like links, forms can also be used to make the browser send an HTTP request
+
+* On Route Priority: In Sinatra, it uses the first route that matches a request. For example, if a route `/albums/:id` has been defined first then also creating a `/albums/new` route, `:id` will "capture" the value `new` in the URL. An easy fix is to define, `/albums/new` first.
