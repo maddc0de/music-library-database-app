@@ -71,11 +71,9 @@ sequenceDiagram
 
 * Using browser developer tools to inspect HTTP requests sent by the browser, and the responses it receives can help get visibility into what the browser sends and get back through its HTTP connection with the web server
 
-* A form is used to send `POST` request, usually with some additional data, as request parameters and implemented over two routes:
+* Like links, forms can also be used to make the browser send an HTTP request. A form can be used to send `POST` request, usually with some additional data, as request parameters and implemented over two routes:
 
 1. `GET` route, only returns an HTML page with the form, so the user can fill in and submit it.
 2. `POST` route, handles the body parameters sent by the browser, and returns a response (usually to indicate whether the form data has been successfully handled or saved).
-
-Like links, forms can also be used to make the browser send an HTTP request
 
 * On Route Priority: In Sinatra, it uses the first route that matches a request. For example, if a route `/albums/:id` has been defined first then also creating a `/albums/new` route, `:id` will "capture" the value `new` in the URL. An easy fix is to define, `/albums/new` first.
