@@ -6,10 +6,14 @@
   <input type="text" name="release_year"><br>
 
   <label>Artist ID:</label>
-    <select>
-    <%@artists.each do |artist|%>
-    <option><%=artist.id%></option>
-    <%end%>
+    <select name="artist_id">
+
+      <%@artists.each do |artist|%>
+        <optgroup label="<%=artist.name%>">
+          <option><%=artist.id%></option>
+        </optgroup>
+      <%end%>
+      
     </select>
 
 

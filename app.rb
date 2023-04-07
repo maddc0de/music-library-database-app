@@ -82,8 +82,8 @@ class Application < Sinatra::Base
   end
 
   def invalid_request_params?
-    return true if params[:title] == nil || params[:release_year] == nil || params[:artist_id] == nil
-    return true if params[:title] == "" || params[:release_year] == "" || params[:artist_id] == ""
+    return true if params[:title] == nil || params[:release_year] == nil
+    return true if params[:title] == "" || params[:release_year] == ""
     return false
   end
 

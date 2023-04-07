@@ -28,7 +28,6 @@ describe Application do
       expect(response.body).to include('<form method="POST" action="/albums">')
       expect(response.body).to include('<input type="text" name="title">')
       expect(response.body).to include('<input type="text" name="release_year">')
-      expect(response.body).to include('<input type="text" name="artist_id">')
     end
   end
 
