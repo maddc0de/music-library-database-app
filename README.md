@@ -77,3 +77,11 @@ sequenceDiagram
 2. `POST` route, handles the body parameters sent by the browser, and returns a response (usually to indicate whether the form data has been successfully handled or saved).
 
 * On Route Priority: In Sinatra, it uses the first route that matches a request. For example, if a route `/albums/:id` has been defined first then also creating a `/albums/new` route, `:id` will "capture" the value `new` in the URL. An easy fix is to define, `/albums/new` first.
+
+* Getting visibility:
+We can get visibility using different tools depending on the "layer":
+
+> * In Sinatra routes or Ruby classes, we can use p to inspect the value of variables or log arbitrary messages. These will be displayed in the terminal, in the logs of the rackup command, which we use to run the web server.
+> * In ERB / HTML views, we can use ERB tags to display the value of instance variables set inside the route block (e.g <%= @something %>) so it is displayed as part of the HTML page.
+> * We can get visibility into the HTTP request and response — what data is flowing between the client (the web browser) and the server. We can use a client like Postman, or the Browser Developer tools.
+> * We can also manually inspect the web page to see what is wrong, or check if Sinatra returns a helpful error message for us.
