@@ -1,4 +1,4 @@
-# WEB APPLICATIONS:
+# WEB APPLICATIONS
 
 ----
 
@@ -7,6 +7,7 @@
 This project connects together what I have learnt working with databases and with what I have learnt in building web applications.
 
 >A simplified schema of how a typical database-backed (CRUD) web application works:
+>
 > 1. The client sends a HTTP request to the web server over the Internet: GET /albums
 > 2. The web server (a Sinatra application, in our case) handles the request, and executes the route block, which calls the method AlbumRepository#all
 > 3. The Repository class runs a SQL query to the database.
